@@ -1,0 +1,58 @@
+<!doctype html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>01 JS React JS</title>
+        <meta name="author" content="Isaac Daniel Navarro Romero">
+        <meta name="description" content="Course React JS 01">
+    </head>
+
+    <body>
+        <div id="root"></div>
+        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>        
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <script type="text/babel">
+            const rootElement = document.getElementById("root");
+            
+            const myValues = {
+                className: "superClass",
+                style: {backgroundColor:"black",color:"white"},
+                children: ["Hello World", (new Date()).toLocaleDateString()],
+                msg: "hello"
+            }
+
+            const rectangle = (props) => {
+                return {
+                    <div>
+                        <div> Rectangle</div>
+                        <div> height={props.height}</div>
+                        <div> width={props.width}</div>
+                        <div> area={props.height*props.width}</div>
+                    </div>
+                }
+            }
+            
+
+            const rectangle = (props) => {
+                return {
+                    <div>
+                        <Rectangle height={100} width = {200} />
+                    </div>
+                }
+            }
+            const element = function({msg}){
+                return <div>{msg}</div>
+            }
+            const test = function() {
+                console.log('Hi')                
+            }
+
+            const element2 = <div {...myValues}/>
+
+            ReactDOM.render(element, rootElement);
+            
+        </script>
+    </body>
+</html>

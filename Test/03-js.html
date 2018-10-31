@@ -1,0 +1,76 @@
+<!doctype html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>01 JS React JS</title>
+        <meta name="author" content="Isaac Daniel Navarro Romero">
+        <meta name="description" content="Course React JS 01">
+    </head>
+
+    <body>
+        <div id="root"></div>
+        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+        <script src="https://unpkg.com/prop-types@15.6.0/prop-types.js" crossorigin></script>        
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <script type="text/babel">
+            const rootElement = document.getElementById("root");
+
+            class Message extends React.Component{
+                render() {
+                    return <h1>hello {this.props.name} </h1>
+                }
+            }
+
+            class DateTimeMessage extends React.Component {
+                constructor(props){
+                    super(props);
+                    this.state = {d:new Date() };
+                    this.count = props.count;
+                }
+
+                render() {
+                    
+                    return(
+                        <div>
+                            <h1>{this.state.d.toLocaleTimeString()}</h1>
+                            <h3>{this.state.d.toLocaleDateString()}</h3>
+                        </div>
+                    )
+                }
+                
+                componentDidMount(){
+                    this.id = setInterval(()=>{
+                        this.update()},
+                        this.count)
+                }
+                componentWillUnmount(){
+                    clearInterval(this.id)
+                }
+                update() {
+                    this.setState({
+                        d: new Date()
+                    })
+                }
+                /*
+                instand() {
+                    
+                    const element = this.render
+                    
+                    ReactDOM.render(element, rootElement);
+                }
+                
+                setInterval (instand,1000);*/
+            }
+            
+            ReactDOM.render((
+                <div>
+                    <Message name ='Daniel' />
+                    <DateTimeMessage count = '2000'/>
+                </div>
+            ), rootElement);
+        
+        </script>
+    </body>
+</html>
