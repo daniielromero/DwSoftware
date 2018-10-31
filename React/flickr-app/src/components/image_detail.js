@@ -4,15 +4,15 @@ const ImageDetail = ({image}) => {
     
     if(image){
         return (
-            <div className="container">
-                <div className = "center">
+            <div className="columna">
+                <div>
                     <img className="Image-Detail"
                         src = {image.url_s} 
                         alt = {image.title}
                     />
                 </div>
                 
-                <div className = "right">Title: {image.title}</div>
+                <div>Title: {image.title}</div>
             </div>
         )
     }else{

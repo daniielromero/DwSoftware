@@ -50,8 +50,9 @@
 
 .Image-Detail {
   margin: 8px;
-  width: 200px;
-  height:200px;
-  float: center;
+  width: 600px;
+  height: 400px;
   
 }
+
+label {display:block; text-align:right;}

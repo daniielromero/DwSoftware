@@ -21,7 +21,8 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <SearchBar onSearchTextChanged = {text => this.searchImage(text)} />
+          <label >Search: <SearchBar onSearchTextChanged = {text => this.searchImage(text)} /></label>
+          
           <ImageDetail image = {this.state.selectedImage} />
           <ImageList 
             OnImageClick = {
@@ -36,7 +37,14 @@ class App extends Component {
     );
   }
   searchImage(text) {
-    axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${API_KEY_FLICKR}&format=json&text=${text}&nojsoncallback=true&per_page=5&extras=url_s`).then(
+    axios.get(`https://api.flickr.com/services/rest/?
+    method=flickr.photos.search&
+    api_key=${API_KEY_FLICKR}&
+    format=json&
+    text=${text}&
+    nojsoncallback=true&
+    per_page=15&
+    extras=url_s`).then(
         (response) => {
             console.log(response)
             if(response.data.photos){
@@ -46,6 +54,7 @@ class App extends Component {
               })
             }else{
               this.setState({selectedImage: null})
+              ImageList.setState({})
             }
             //response.data.photos.
         }
